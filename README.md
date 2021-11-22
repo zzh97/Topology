@@ -32,7 +32,7 @@ scene.render()
 </script>
 ```
 
-![1](.\TPimg\1.png)
+![1](./TPimg/1.png)
 
 ### Examples
 
@@ -76,7 +76,7 @@ scene.render()
 </script>
 ```
 
-![2](.\TPimg\2.png)
+![2](./TPimg/2.png)
 
 ### VUE-CLI
 
@@ -157,7 +157,7 @@ export default {
 </script>
 ```
 
-![3](.\TPimg\3.png)
+![3](./TPimg/3.png)
 
 ### mini-program (WeChat)
 
@@ -261,7 +261,7 @@ Page({
  })
 ```
 
-![4](.\TPimg\4.png)
+![4](./TPimg/4.png)
 
 ### API
 
