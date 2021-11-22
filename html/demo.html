@@ -1,0 +1,145 @@
+<canvas id="canvas"></canvas>
+<script src="topology-zh.js"></script>
+<script>
+  let data = {
+    nodeArr: [
+      {
+        name: '节点1',
+        x: 100,
+        y: 100,
+        nodeType: 'img',
+        imgUrl: './logo.png',
+        textLocal: 'bottom',
+        next: [
+          {
+            name: '节点2',
+            value: '20',
+          },
+          {
+            name: '节点3',
+            value: '15',
+          }
+          
+        ]
+      },
+      {
+        name: '节点2',
+        x: 300,
+        y: 100,
+        next: [
+          {
+            name: '节点1',
+            value: '10',
+          }
+        ]
+      },
+      {
+        name: '节点3',
+        x: 100,
+        y: 300,
+        next: [
+          {
+            name: '节点1',
+            value: '10',
+          }
+        ]
+      }
+    ]
+
+  }
+  let canvas = document.getElementById('canvas')
+  let TP = Topology_ZH(canvas)
+  let scene = TP.read_data(data.nodeArr)
+  console.log (TP.write_data())
+  scene.prim()
+  // // 创建场景对象（背景颜色，不写为透明）
+  // let scene = TP.create_scene('#aaf')
+  // 节点名称，x轴位置，y轴位置，节点大小，路径权重,节点类型，连线类型，节点颜色，文本颜色，连线颜色
+  // let node = TP.create_node('节点1', 20, 20, 70, 'box', 'arrow')
+  // let node2 = TP.create_node('节点2', 200, 20, 70, 'round')
+  // let node3 = TP.create_node('节点3', 200, 200, 70, 'round')
+  // let node4 = TP.create_node('节点4', 500, 200, 70, 'img')
+  // node.textLocal = 'bottom'
+  // node4.imgUrl = './logo.png'
+  // node4.textLocal = 'bottom'
+  // // 连接节点
+  // node.link(node2, '123')
+  // node.link(node3, '222')
+  // node2.link(node4)';/'
+  // console.log (node)
+  // node2.link(node)
+  // // 向场景中添加节点
+  // scene.add(node, node2, node3, node4)
+  // 监听鼠标事件
+  scene.listen('mouse')
+  // scene.traverse('BFS')
+  // scene.find('节点3')
+  // scene.sort()
+  // 渲染
+  let timer = scene.render ((el)=>{
+    // 鼠标在节点上悬停时
+    el.hover = function () {
+      el.nodeColor = '#5a5'
+    }
+    // 鼠标不在节点上悬停时
+    el.unhover = function () {
+      el.nodeColor = '#e55'
+    }
+    // 鼠标点击节点时
+    el.click = function () {
+      console.log (el)
+      
+    }
+    // 鼠标拖拽节点时
+    el.drag = function () {
+      el.x = TP.mouseX - el.spaceX
+      el.y = TP.mouseY - el.spaceY
+    }
+  }, 30) // 30是fps
+  // let canvas = document.getElementById('canvas')
+  //   let TP = Topology_ZH(canvas)
+  //   // 创建场景对象（背景颜色，不写为透明）
+  //   let scene = TP.create_scene('#aaa')
+  //   // 节点名称，x轴位置，y轴位置，节点大小，节点类型，连线类型，节点颜色，文本颜色，连线颜色
+	//   let node = TP.create_node('节点1', 20, 20, 70, 'box', 'arrow')
+  //   let node2 = TP.create_node('节点2', 200, 20, 70, 'round', 'arrow')
+  //   let node3 = TP.create_node('节点3', 20, 200, 70, 'box', 'line')
+  //   let node4 = TP.create_node('节点4', 200, 200, 70, 'box', 'arrow')
+  //   let node5 = TP.create_node('节点5', 300, 200, 70, 'box', 'arrow')
+  //   let node6 = TP.create_node('节点6', 100, 300, 70, 'box', 'arrow')
+  //   // 连接节点
+  //   node.link(node2)
+  //   node.link(node3)
+  //   node2.link(node4)
+  //   node2.link(node5)
+  //   node4.link(node)
+  //   node3.link(node6)
+  //   // node2.link(node3)
+  //   // 向场景中添加节点
+  //   scene.add(node, node2, node3, node4, node5, node6)
+  //   // scene.delete(node3)
+  //   // 监听鼠标事件
+  //   scene.listen('mouse')
+  //   // scene.find()
+  //   console.log (scene.traverse('B'))
+  //   // 渲染
+  //   let timer = scene.render ((el)=>{
+  //       // 鼠标在节点上悬停时
+  //       el.hover = function () {
+  //         el.nodeColor = '#5a5'
+  //       }
+  //       // 鼠标不在节点上悬停时
+  //       el.unhover = function () {
+  //         el.nodeColor = '#e55'
+  //       }
+  //       // 鼠标点击节点时
+  //       el.click = function () {
+  //         console.log ('click')
+  //       }
+  //       // 鼠标拖拽节点时
+  //       el.drap = function () {
+  //         el.x = TP.mouseX - el.spaceX
+  //         el.y = TP.mouseY - el.spaceY
+  //       }
+  //     }, 30) // 30是fps
+</script>
